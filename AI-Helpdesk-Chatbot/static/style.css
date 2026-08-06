@@ -1,0 +1,45 @@
+p{
+    color:#555;
+    font-size:16px;
+}
+
+.reply h3{
+    margin:0;
+    color:#007BFF;
+}
+
+.reply p{
+    margin-top:10px;
+    white-space:pre-line;
+}
+
+input:focus{
+    outline:none;
+    border:2px solid #007BFF;
+}
+
+button{
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.container{
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}

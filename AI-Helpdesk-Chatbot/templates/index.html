@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Helpdesk Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤖 AI Internal Helpdesk Assistant</h1>
+
+    <p>
+        Ask anything related to your office services.
+    </p>
+
+    <form method="POST">
+
+        <input
+            type="text"
+            name="question"
+            placeholder="Type your question here..."
+            required>
+
+        <button type="submit">
+            Ask
+        </button>
+
+    </form>
+
+    {% if reply %}
+
+    <div class="reply">
+
+        <h3>Bot Reply</h3>
+
+        <p>{{ reply }}</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+
+</html>

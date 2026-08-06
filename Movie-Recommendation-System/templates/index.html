@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CineAI | Smart Movie Recommendation</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+🍿 CineAI
+
+</div>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Recommendations</a>
+
+<a href="#">About</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>
+
+🎬 Smart Movie Recommendation System
+
+</h1>
+
+<p>
+
+Find movies you'll love using Artificial Intelligence and Machine Learning.
+
+</p>
+
+<div class="banner">
+
+🍿 Discover Thousands of Movies
+
+<br><br>
+
+⭐ Personalized Recommendations
+
+<br><br>
+
+🎯 Powered by Content-Based Filtering
+
+</div>
+
+<form method="POST">
+
+<input
+
+type="text"
+
+name="movie"
+
+placeholder="Search a movie... (Example: Iron Man)"
+
+required>
+
+<button type="submit">
+
+Recommend
+
+</button>
+
+</form>
+
+</section>
+
+<section class="stats">
+
+<div class="stat-card">
+
+<h2>{{ total_movies }}</h2>
+
+<p>Total Movies</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>TF-IDF</h2>
+
+<p>Recommendation Engine</p>
+
+</div>
+
+<div class="stat-card">
+
+<h2>Cosine</h2>
+
+<p>Similarity Algorithm</p>
+
+</div>
+
+</section>
+
+<section class="popular">
+
+<h2>
+
+🔥 Popular Movies
+
+</h2>
+
+<div class="popular-buttons">
+
+{% for movie in popular_movies %}
+
+<form method="POST">
+
+<input
+
+type="hidden"
+
+name="movie"
+
+value="{{ movie }}">
+
+<button class="movie-button">
+
+{{ movie }}
+
+</button>
+
+</form>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% if not_found %}
+
+<div class="not-found">
+
+<h2>
+
+❌ Movie Not Found
+
+</h2>
+
+<p>
+
+Try searching one of these movies:
+
+</p>
+
+<p>
+
+Avatar • Iron Man • Interstellar • Titanic • The Dark Knight
+
+</p>
+
+</div>
+
+{% endif %}
+
+{% if recommendations %}
+
+<section class="results">
+
+<h2>
+
+Recommendations for
+
+<span>
+
+{{ searched_movie }}
+
+</span>
+
+</h2>
+
+<div class="cards">
+
+{% for movie in recommendations %}
+
+<div class="card">
+
+<div class="movie-icon">
+
+🎬
+
+</div>
+
+<div class="content">
+
+<h3>
+
+{{ movie.title }}
+
+</h3>
+
+<div class="rating">
+
+⭐⭐⭐⭐☆
+
+<span>
+
+{{ movie.rating }}/10
+
+</span>
+
+</div>
+
+<p>
+
+📅 {{ movie.year }}
+
+</p>
+
+<p>
+
+🎭 {{ movie.genres }}
+
+</p>
+
+<div class="badge">
+
+{{ movie.similarity }}% Match
+
+</div>
+
+<p>
+
+{{ movie.overview }}
+
+</p>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+{% endif %}
+
+<footer>
+
+<h2>
+
+🍿 CineAI
+
+</h2>
+
+<p>
+
+Smart Movie Recommendation System built using
+
+Flask • Pandas • Scikit-Learn • TF-IDF • Cosine Similarity
+
+</p>
+
+<p>
+
+Dataset: TMDB 5000 Movies Dataset
+
+</p>
+
+<p>
+
+Developed by Yashveer Singh
+
+</p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="admin-box">
+
+<h1>⚙️ Helpdesk Admin Panel</h1>
+
+<form method="POST">
+
+<input
+type="text"
+name="question"
+placeholder="Enter Question"
+required>
+
+<br><br>
+
+<input
+type="text"
+name="answer"
+placeholder="Enter Answer"
+required>
+
+<br><br>
+
+<button>Add FAQ</button>
+
+</form>
+
+<h2>Current FAQs</h2>
+
+<table>
+
+<tr>
+
+<th>ID</th>
+
+<th>Question</th>
+
+<th>Answer</th>
+
+</tr>
+
+{% for row in data %}
+
+<tr>
+
+<td>{{ row[0] }}</td>
+
+<td>{{ row[1] }}</td>
+
+<td>{{ row[2] }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</body>
+
+</html>
